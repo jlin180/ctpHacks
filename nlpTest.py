@@ -117,6 +117,8 @@ def pullLink():
             d = datetime.timedelta(1)
             datePosted = (today - d).date()
 
+        datePosted = datePosted.strftime("%m/%d/%Y")
+
         #grabbing location
         location = subSoup.find("span",{"class": "topcard__flavor topcard__flavor--bullet"}).text
         location = location.encode("ascii","ignore").decode('utf-8')
@@ -132,7 +134,7 @@ def pullLink():
 
         #filtering the job posting
         descText = descText.encode("ascii","ignore").decode('utf-8')
-        lemDesc = descText;
+        lemDesc = descText
         lemDesc = cleanData(lemDesc)
         lemDesc = lemmatize_sentence(lemDesc)
 
@@ -146,7 +148,7 @@ def pullLink():
                 "reqs": descText,
                 "datePosted": datePosted,
                 "location": location,
-                "link": i['href']
+                "link": i['href'].encode("ascii", "ignore").decode('utf-8')
             }
 
             jobs.append(jobDict)
@@ -210,6 +212,8 @@ def pullMonster():
             d = datetime.timedelta(int(splitTime[1]))
             datePosted = (today - d).date()
 
+        datePosted = datePosted.strftime("%m/%d/%Y")
+
         # grabbing location
         location = subSoup.find("div", {"name": "job_company_location"}).text
         location = re.sub("\d", "", location)
@@ -226,7 +230,7 @@ def pullMonster():
 
         #filtering the job posting
         descText = descText.encode("ascii", "ignore").decode('utf-8')
-        lemDesc = descText;
+        lemDesc = descText
         lemDesc = cleanData(lemDesc)
         lemDesc = lemmatize_sentence(lemDesc)
 
@@ -240,7 +244,7 @@ def pullMonster():
                 "reqs": descText,
                 "datePosted": datePosted,
                 "location": location,
-                "link": link
+                "link": link['href'].encode("ascii", "ignore").decode('utf-8')
             }
 
             jobs.append(jobDict)
@@ -268,6 +272,9 @@ def main():
     jobs = pullLink()
     jobs2 = pullMonster()
     joinedJobs = jobs+jobs2
+    for i in joinedJobs:
+        print(i)
+
 
 if __name__ == "__main__":
     main()
