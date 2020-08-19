@@ -1,5 +1,6 @@
 import bs4 as bs
 import urllib.request
+import FirebaseAPI
 
 def pullData():
     #getting linkedin main job search page
@@ -45,6 +46,7 @@ def main():
     #jobs = cleanData(jobs)
     for i in jobs:
         print(i["reqs"].encode("utf-8"))
+    FirebaseAPI.insert(jobs)
 
 
 if __name__ == "__main__":
