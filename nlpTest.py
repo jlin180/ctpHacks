@@ -2,10 +2,58 @@ import bs4 as bs
 import urllib.request
 import re
 import datetime
+import copy
+from urllib.error import HTTPError
+from google.cloud import automl
+import nltk
+from nltk.stem import WordNetLemmatizer
+from nltk.corpus import wordnet
+
+lemmatizer = WordNetLemmatizer()
+
+def nltk2wn_tag(nltk_tag):
+  if nltk_tag.startswith('J'):
+    return wordnet.ADJ
+  elif nltk_tag.startswith('V'):
+    return wordnet.VERB
+  elif nltk_tag.startswith('N'):
+    return wordnet.NOUN
+  elif nltk_tag.startswith('R'):
+    return wordnet.ADV
+  else:
+    return None
+
+def lemmatize_sentence(sentence):
+  nltk_tagged = nltk.pos_tag(nltk.word_tokenize(sentence))
+  wn_tagged = map(lambda x: (x[0], nltk2wn_tag(x[1])), nltk_tagged)
+  res_words = []
+  for word, tag in wn_tagged:
+    if tag is None:
+      res_words.append(word)
+    else:
+      res_words.append(lemmatizer.lemmatize(word, tag))
+  return " ".join(res_words)
+
+def find_keywords(job):
+
+    badWords = ["senior","sr","p hd","phd","masters","master","ph d"]
+    badYears =["yearsofexperience","years of experience","years of","years","year","year of"]
+
+    if "bachlors" in job or "bachlor" in job:
+        for word in badYears:
+            if word in job:
+                return False
+    else:
+        combined = badWords + badYears
+        for word in combined:
+            if word in job:
+                return False
+
+    return True
 
 def pullLink():
     #getting linkedin main job search page
-    sauce = urllib.request.urlopen("https://www.linkedin.com/jobs/search?keywords=Computer%2BScience&trk=public_jobs_jobs-search-bar_search-submit&f_TP=1%2C2&redirect=false&position=1&pageNum=0").read()
+    sauce = urllib.request.urlopen("https://www.linkedin.com/jobs/search?keywords=Software%2BEngineer&location=New%2BYork%2C%2BUnited%2BStates&geoId=105080838&trk=public_jobs_jobs-search-bar_search-submit&f_TP=1%2C2&f_E=2&redirect=false&position=1&pageNum=0").read()
     soup = bs.BeautifulSoup(sauce,"lxml")
     links = soup.find_all("a",{"class": "result-card__full-card-link"})
 
@@ -13,12 +61,23 @@ def pullLink():
     #going through all the links
     for i in links:
         #obtaining information
-        subSauce = urllib.request.urlopen(i["href"]).read()
+        try:
+            subSauce = urllib.request.urlopen(i['href']).read()
+        except UnicodeEncodeError:
+            continue
+        except HTTPError as err:
+            continue
         subSoup = bs.BeautifulSoup(subSauce,"lxml")
 
         #grabbing company name
-        company = subSoup.find("a",{"class": "topcard__org-name-link topcard__flavor--black-link"}).text
-        company = company.encode("ascii","ignore").decode('utf-8')
+        try:
+            company = subSoup.find("a", {"class": "topcard__org-name-link topcard__flavor--black-link"}).text
+        except AttributeError:
+            continue
+        try:
+            company = company.encode("ascii", "ignore").decode('utf-8')
+        except UnicodeEncodeError:
+            continue
 
         #grabbing job title
         jobTitle = subSoup.find("h2",{"class": "topcard__title"}).text
@@ -50,21 +109,28 @@ def pullLink():
             descText = descText.replace(j.text,"")
 
         descText = descText.encode("ascii","ignore").decode('utf-8')
+        lemDesc = descText;
+        lemDesc = cleanData(lemDesc)
+        lemDesc = lemmatize_sentence(lemDesc)
 
-        jobDict = {
-            "company": company,
-            "title": jobTitle,
-            "reqs": descText,
-            "datePosted": datePosted,
-            "location": location
-        }
+        if find_keywords(lemDesc) is False:
+            continue
+        else:
+            jobDict = {
+                "company": company,
+                "title": jobTitle,
+                "reqs": descText,
+                "datePosted": datePosted,
+                "location": location,
+                "link": i['href']
+            }
 
-        jobs.append(jobDict)
+            jobs.append(jobDict)
 
     return jobs
 
 def pullMonster():
-    sauce = urllib.request.urlopen("https://www.monster.com/jobs/search/?q=Computer-Science&intcid=skr_navigation_nhpso_searchMainPrefill&tm=14").read()
+    sauce = urllib.request.urlopen("https://www.monster.com/jobs/search/?q=Software-Engineer&tm=14").read()
     soup = bs.BeautifulSoup(sauce, "lxml")
     links = soup.find_all("h2", {"class": "title"})
 
@@ -73,15 +139,27 @@ def pullMonster():
     for i in links:
         #obtaining link
         link = i.find("a",href=True)
-        subSauce = urllib.request.urlopen(link['href']).read()
+        try:
+            subSauce = urllib.request.urlopen(link['href']).read()
+        except UnicodeEncodeError:
+            continue
+        except HTTPError as err:
+            continue
+
         subSoup = bs.BeautifulSoup(subSauce, "lxml")
 
         #grabbing company name
-        company = subSoup.find("div", {"class": "job_company_name tag-line c-primary"}).text
-        if(company is ""):
+        try:
+            company = subSoup.find("div", {"class": "job_company_name tag-line c-primary"}).text
+            if (company is ""):
+                continue
+            else:
+                try:
+                    company = company.encode("ascii", "ignore").decode('utf-8')
+                except UnicodeEncodeError:
+                    continue
+        except AttributeError:
             continue
-        else:
-            company = company.encode("ascii", "ignore").decode('utf-8')
 
         # grabbing job title
         jobTitle = subSoup.find("h1", {"class": "job_title c-primary-dk"}).text
@@ -116,34 +194,44 @@ def pullMonster():
             descText = descText + j.text
 
         descText = descText.encode("ascii", "ignore").decode('utf-8')
+        lemDesc = descText;
+        lemDesc = cleanData(lemDesc)
+        lemDesc = lemmatize_sentence(lemDesc)
 
-        jobDict = {
-            "company": company,
-            "title": jobTitle,
-            "reqs": descText,
-            "datePosted": datePosted,
-            "location": location
-        }
+        if find_keywords(lemDesc) is False:
+            continue
+        else:
+            jobDict = {
+                "company": company,
+                "title": jobTitle,
+                "reqs": descText,
+                "datePosted": datePosted,
+                "location": location,
+                "link": link
+            }
 
-        jobs.append(jobDict)
-
-    return jobs
-
-
-
-def cleanData(jobs):
-    for i in jobs:
-        i["reqs"] = i["reqs"].lower()
-        i["reqs"] = i["reqs"].replace("C++", "cplusplus").encode("ascii", "ignore").decode('utf-8')
-        i["reqs"] = re.sub('[\W_]+', " ", i["reqs"]).encode("ascii", "ignore").decode('utf-8')
+            jobs.append(jobDict)
 
     return jobs
+
+
+
+def cleanData(job):
+    job = job.lower()
+    job = job.replace("c++", "cplusplus").encode("ascii", "ignore").decode('utf-8')
+    job = job .replace("Description", "").encode("ascii", "ignore").decode('utf-8')
+    job = job .replace("description", "").encode("ascii", "ignore").decode('utf-8')
+    job = re.sub('[\W_]+', " ", job ).encode("ascii", "ignore").decode('utf-8')
+    # i["reqs"] = re.sub('[^,.0-9a-zA-Z\s]', "", i["reqs"]).encode("ascii", "ignore").decode('utf-8')
+    job = job.replace("\n", "").encode("ascii", "ignore").decode('utf-8')
+    job = job.replace("\t", "").encode("ascii", "ignore").decode('utf-8')
+
+    return job
 
 def main():
     jobs = pullLink()
     jobs2 = pullMonster()
-    jobs = jobs +jobs2
-    jobs = cleanData(jobs)
+    joinedJobs = jobs+jobs2
 
 if __name__ == "__main__":
     main()
