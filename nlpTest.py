@@ -1,5 +1,6 @@
 import bs4 as bs
 import urllib.request
+import re
 
 def pullData():
     #getting linkedin main job search page
@@ -33,16 +34,17 @@ def pullData():
 
     return jobs
 
-#def cleanData(jobs):
-    #for i in jobs:
-        #i["reqs"] = i["reqs"].replace("."," ")
-        #i["reqs"] = i["reqs"].replace(","," ")
+def cleanData(jobs):
+    for i in jobs:
+        i["reqs"] = i["reqs"].toLowerCase()
+        i["reqs"] = i["reqs"].replace("C++")
+        i["reqs"] = re.sub('[\W_]+'," ",i["reqs"])
 
-    #return jobs
+    return jobs
 
 def main():
     jobs = pullData()
-    #jobs = cleanData(jobs)
+    jobs = cleanData(jobs)
     for i in jobs:
         print(i["reqs"].encode("utf-8"))
 
