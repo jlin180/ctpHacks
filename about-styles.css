@@ -1,0 +1,138 @@
+:root {
+    --ab-font: Roboto;
+    --ab-cardShadow: #C0C0C0;
+    --ab-googleRed: #D8443D;
+    --ab-googleRedLight: #E5817D;
+    --ab-googleGreen: #209A5C;
+    --ab-googleGreenLight: #32D482;
+    --ab-googleBlue: #4487EF;
+    --ab-googleBlueLight: #8AB4F5;
+    --ab-googleYellow: #F2B030;
+    --ab-googleYellowLight: #F7CB78;
+}
+
+.googleRed { 
+    background-color: var(--ab-googleRed); 
+}
+
+.googleRed.ab-card {
+    margin-top: 10px;
+    border-left: 20px solid var(--ab-googleRedLight);
+     /* MANUALLY MODIFY THE COLOR OF THE BORDER  */
+     /* IF BOOKMARKED, REMOVE BORDER-LEFT, ADD BORDER-TOP */
+     box-shadow: 4px 4px 4px var(--ab-cardShadow);
+}
+
+.googleRed > .ab-defaultImg {
+    color: var(--ab-googleRed);
+}
+
+.googleGreen { 
+    background-color: var(--ab-googleGreen); 
+}
+
+.googleGreen.ab-card {
+    margin-top: 10px;
+    border-left: 20px solid var(--ab-googleGreenLight);
+     /* MANUALLY MODIFY THE COLOR OF THE BORDER  */
+     /* IF BOOKMARKED, REMOVE BORDER-LEFT, ADD BORDER-TOP */
+     box-shadow: 4px 4px 4px var(--ab-cardShadow);
+}
+
+.googleGreen > .ab-defaultImg {
+    color: var(--ab-googleGreen);
+}
+
+.googleBlue { 
+    background-color: var(--ab-googleBlue); 
+}
+
+.googleBlue.ab-card {
+    margin-top: 10px;
+    border-left: 20px solid var(--ab-googleBlueLight);
+     /* MANUALLY MODIFY THE COLOR OF THE BORDER  */
+     /* IF BOOKMARKED, REMOVE BORDER-LEFT, ADD BORDER-TOP */
+     box-shadow: 4px 4px 4px var(--ab-cardShadow);
+}
+
+.googleBlue > .ab-defaultImg {
+    color: var(--ab-googleBlue);
+}
+
+.googleYellow { 
+    background-color: var(--ab-googleYellow); 
+}
+
+.googleYellow.ab-card {
+    margin-top: 10px;
+    border-left: 20px solid var(--ab-googleYellowLight);
+     /* MANUALLY MODIFY THE COLOR OF THE BORDER  */
+     /* IF BOOKMARKED, REMOVE BORDER-LEFT, ADD BORDER-TOP */
+     box-shadow: 4px 4px 4px var(--ab-cardShadow);
+}
+
+.googleYellow > .ab-defaultImg {
+    color: var(--ab-googleYellow);
+}
+
+.ab-card {
+    margin-top: 10px;
+    box-shadow: 4px 4px 4px var(--ab-cardShadow);
+}
+.ab-name { 
+    color: white;
+    font-family: var(--ab-font);
+    font-weight: bold;
+}
+
+.ab-location {
+    color: white;
+    font-family: var(--ab-font);
+    font-weight: normal;
+}
+
+.ab-college {
+    color: white;
+    font-family: var(--ab-font);
+    font-weight: lighter;
+    margin-bottom: 20px;
+}
+
+.ab-role {
+    color: white;
+    font-family: var(--ab-font);
+    font-weight: lighter;
+}
+
+.ab-defaultImg > img {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    font-size: 50px;
+    color: #4487EF;
+    text-align: center;
+    line-height: 100px;
+    margin: 20px 0;
+}
+
+.aboutTitle {
+    color: black;
+    font-family: var(--ab-font);
+    font-weight: lighter;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    font-size: 60px;
+}
+
+.aboutContent {
+    color: black;
+    font-family: var(--ab-font);
+    font-weight: normal;
+    font-size: x-large;
+}
+
+.img-fluid > img {
+    width: 100%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}

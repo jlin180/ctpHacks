@@ -1,0 +1,113 @@
+:root {
+    --jl-font: Roboto;
+    --jl-cardShadow: #C0C0C0;
+    --jl-googleRed: #D8443D;
+    --jl-googleRedLight: #E5817D;
+    --jl-googleGreen: #209A5C;
+    --jl-googleGreenLight: #32D482;
+    --jl-googleBlue: #4487EF;
+    --jl-googleBlueLight: #8AB4F5;
+    --jl-googleYellow: #F2B030;
+    --jl-googleYellowLight: #F7CB78;
+}
+
+.googleRed { 
+    background-color: var(--jl-googleRed); 
+}
+
+.googleRed.jl-card {
+    border-left: 20px solid var(--jl-googleRedLight);
+     /* MANUALLY MODIFY THE COLOR OF THE BORDER  */
+     /* IF BOOKMARKED, REMOVE BORDER-LEFT, ADD BORDER-TOP */
+}
+
+.googleRed > .jl-defaultImg {
+    color: var(--jl-googleRed);
+}
+
+.googleGreen { 
+    background-color: var(--jl-googleGreen); 
+}
+
+.googleGreen.jl-card {
+    border-left: 20px solid var(--jl-googleGreenLight);
+     /* MANUALLY MODIFY THE COLOR OF THE BORDER  */
+     /* IF BOOKMARKED, REMOVE BORDER-LEFT, ADD BORDER-TOP */
+}
+
+.googleGreen > .jl-defaultImg {
+    color: var(--jl-googleGreen);
+}
+
+.googleBlue { 
+    background-color: var(--jl-googleBlue); 
+}
+
+.googleBlue.jl-card {
+    border-left: 20px solid var(--jl-googleBlueLight);
+     /* MANUALLY MODIFY THE COLOR OF THE BORDER  */
+     /* IF BOOKMARKED, REMOVE BORDER-LEFT, ADD BORDER-TOP */
+}
+
+.googleBlue > .jl-defaultImg {
+    color: var(--jl-googleBlue);
+}
+
+.googleYellow { 
+    background-color: var(--jl-googleYellow); 
+}
+
+.googleYellow.jl-card {
+    border-left: 20px solid var(--jl-googleYellowLight);
+     /* MANUALLY MODIFY THE COLOR OF THE BORDER  */
+     /* IF BOOKMARKED, REMOVE BORDER-LEFT, ADD BORDER-TOP */
+}
+
+.googleYellow > .jl-defaultImg {
+    color: var(--jl-googleYellow);
+}
+
+.jl-card {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 4px 4px 4px var(--jl-cardShadow);
+    transform: rotate(0);
+}
+.jl-companyName { 
+    color: white;
+    font-family: var(--jl-font);
+    font-weight: bold;
+}
+
+.jl-position {
+    color: white;
+    font-family: var(--jl-font);
+    font-weight: normal;
+}
+
+.jl-location {
+    color: white;
+    font-family: var(--jl-font);
+    font-weight: lighter;
+    margin-bottom: 20px;
+}
+
+.jl-posting {
+    color: white;
+    font-family: var(--jl-font);
+    font-weight: lighter;
+}
+
+.jl-defaultImg {
+    font-family: var(--jl-font);
+    font-weight: normal;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: white;
+    font-size: 50px;
+    color: #4487EF;
+    text-align: center;
+    line-height: 100px;
+    margin: 20px 0;
+}
