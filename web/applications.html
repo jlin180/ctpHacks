@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/applications.css">
+    
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    
+
+    <h1>Applications</h1>
+    <table class="content-table" id="content-table">
+        <thead>
+            <tr>
+                <th class="th0">Date</th>
+                <th class="th1">Company</th>
+                <th class="th2">Position</th>
+                <th class="th3">Status</th>
+                <th class="th4">Listing</th>
+                <th class="th5">Name</th>
+                <th class="th6">Phone #</th>
+                <th class="th7">E-mail</th>
+                <th class="th8">Location</th>
+                <th class="th9">Notes</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <!-- hardcoded -->
+            <tr>
+                <td><input type="date" value="2020 Aug 18"></td>
+                <td><input type="text" value=Microsoft></td>
+                <td><input type="text" value="Full-Time Software Developer"></td>
+                <td>
+                    <select name="status" id="status">
+                        <option value="not applied">Not Applied</option>
+                        <option class="status-pending" value="pending">Pending</option>
+                        <option class="status-rejection" value="rejected">Rejected</option>
+                        <option class="status-offer" value="offer">Offer</option>
+                    </select>
+                </td>
+                <td><a id="link-1" href="#">Link</a><button id="btn-1" onclick="editLink(this)"><i class="fas fa-edit"></i></button></td>
+                <td><input type="text" value="Bill Gates"></td>
+                <td><input type="text" value="123 456-7890"></td>
+                <td><input type="email" value="billgates@microsoft.com"></td>
+                <td><input type="text" value="Redmond, WA"></td>
+                <td><input class="view-notes" id="labelcb-1" type="checkbox" onclick="showHideNotes(this)"><label for="labelcb-1">View Notes</label>
+                    <div class="note popup" id="popup-1">
+                            <textarea class="popuptext" rows=20 cols=10></textarea>
+                    </div>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+    <div class="edit-btns">
+        <button onclick="addListing()">+</button>
+        <button onclick="getRidOfListing()">-</button>
+    </div>
+
+    <script>
+        var num = 0;
+
+        function showHideNotes(checkbox) {
+            var id = checkbox.id;
+            var dash = id.lastIndexOf("-")
+            var numId = id.substr(dash+1);
+
+            var note = document.getElementById("popup-" + numId);
+            if (checkbox.checked) {
+                note.style.visibility = "visible";                
+            } else {
+                note.style.visibility = "hidden";
+            }
+        }
+
+        function addListing() {
+            num++;
+            console.log()
+            var body = document.getElementById("table-body");
+            // console.log(body.innerHTML);
+            body.innerHTML = body.innerHTML +
+            `
+                <tr>
+                    <td><input type="date" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td>
+                        <select name="status" id="status">
+                            <option value="not applied">Not Applied</option>
+                            <option class="status-pending" value="pending">Pending</option>
+                            <option class="status-rejection" value="rejected">Rejected</option>
+                            <option class="status-offer" value="offer">Offer</option>
+                        </select>
+                    </td>
+                    <td><a href="#">Link</a><!-- btn to edit listing --> </td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="email" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input class="view-notes" id="labelcb-` + num + `" type="checkbox" onclick="showHideNotes(this)"><label for="labelcb-` + num + `">View Notes</label>
+                        <div class="note popup" id="popup-` + num + `">
+                            <textarea class="popuptext" rows=20 cols=10></textarea>
+                        </div>
+                    </td>
+                </tr>
+
+            `;
+        }
+
+        function editLink(link) {
+            var id = link.id;
+            var dash = id.lastIndexOf("-")
+            var numId = id.substr(dash+1);
+
+            var hrefElement = document.getElementById("link-" + numId);
+            var linkPrompt = window.prompt("Edit the link to this listing");
+            if (linkPrompt != null) {
+                hrefElement.href = linkPrompt;
+                console.log(linkPrompt);
+            }
+
+
+        }
+    </script>
+</body>
+</html>
