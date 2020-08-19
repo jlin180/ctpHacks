@@ -144,12 +144,6 @@ def main():
     jobs2 = pullMonster()
     jobs = jobs +jobs2
     jobs = cleanData(jobs)
-    for i in jobs2:
-            print(i["company"])
-            print(i["title"])
-            print(i["reqs"])
-            print(i["datePosted"])
-            print(i["location"])
 
 if __name__ == "__main__":
     main()
