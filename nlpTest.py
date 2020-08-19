@@ -6,6 +6,7 @@ from urllib.error import HTTPError
 import nltk
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import wordnet
+import FirebaseAPI
 
 lemmatizer = WordNetLemmatizer()
 
@@ -271,8 +272,7 @@ def main():
     jobs = pullLink()
     jobs2 = pullMonster()
     joinedJobs = jobs+jobs2
-    for i in joinedJobs:
-        print(i)
+    FirebaseAPI.insert(joinedJobs)
 
 
 if __name__ == "__main__":
