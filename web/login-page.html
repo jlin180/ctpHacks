@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <!-- Container -->
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            blue j
+        </div>
+        <!-- Sign in/up Changer-->
+        <div>
+            <button class="sign-btn" id="sign-in-btn">sign in</button>
+            <button class="sign-btn" id="sign-up-btn">sign up</button>
+            
+        </div>
+        <!-- Sign In Container -->
+        <div id="sign-in-div">
+            <form id="sign-in-form" action="homepage.php" method="POST">
+                <div class="input-div">
+                    <input class="input-field" type="email" name="email" placeholder="email" required autocomplete="off">
+                    <input class="input-field" type="password" name="password" placeholder="password" required autocomplete="off">
+                    <label for="stay-signed-in"><input class="input-field" type="checkbox" name="stay-signed-in">Remember me</label>
+                    <input class="input-field" type="submit" name="submit" value="login">
+                    
+                </div>
+                
+            </form>
+            <div class="forgot-pass">
+                <a href="#">forgot password?</a>
+            </div>
+            
+            <!-- continue with google -->
+            <!-- <button>Continue with Google</button> -->
+        </div>
+        <!-- Sign Up Container -->
+        <div id="sign-up-div">
+            <form id="sign-up-form" action="homepage.php" method="POST">
+                <div class="input-div">
+                    <input class="input-field" type="email" name="email" placeholder="email" autocomplete="off" required>
+                    <input class="input-field" type="password" name="password" placeholder="password" autocomplete="off" required>
+                    <input class="input-field" type="password" name="confirm-password" placeholder="confirm password" autocomplete="off" required>
+                    <input class="input-field" type="submit" name="submit" value="register">
+                    
+                </div>
+                
+            </form>
+            <!-- sign up with google -->
+
+        </div>
+
+    </div>
+    <script src="js/login.js"></script>
+</body>
+</html>

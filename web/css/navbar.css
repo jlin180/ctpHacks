@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display&family=Sofia&display=swap');
+
+:root {
+    --logo-font: 'Sofia', cursive;
+    --primary-font: 'Red Hat Display', sans-serif;
+    --primary-color: #4487EF;
+    --logo-font-size: 36px;
+    --primary-font-size: 18px;
+    --placeholder-color: #c4c4c4;
+
+    --nb-font: Roboto;
+    --nb-cardShadow: #C0C0C0;
+    --nb-googleRed: #D8443D;
+    --nb-googleRedLight: #E5817D;
+    --nb-googleGreen: #209A5C;
+    --nb-googleGreenLight: #32D482;
+    --nb-googleBlue: #4487EF;
+    --nb-googleBlueLight: #8AB4F5;
+    --nb-googleYellow: #F2B030;
+    --nb-googleYellowLight: #F2B030;
+
+    --nb-btn-size: 30px;
+    --nb-line-height: 80px;
+    --nb-font-size: 26px;
+    
+}
+
+.nav-wrapper {
+    background-color: var(--nb-googleBlue);
+}
+.nav-wrapper nav a {
+    color: #fff;
+    font-family: var(--logo-font);
+    font-size: var(--logo-font-size);
+}
+
+.nav-wrapper nav div ul li a {
+    color: #fff;
+    font-family: var(--primary-font);
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+    font-size: var(--nb-font-size);
+}
+
+.nav-wrapper nav div ul li a:hover {
+    background-color: var(--nb-googleBlueLight);
+    transition: .5s ease;
+    border-radius: 5px;
+
+}
+
+.nav-wrapper nav div ul li {
+    margin: 10px 10px;
+}
+.navbar-collapse {
+    transition: .1s ease;
+}
+
+.nav-wrapper nav div ul li a i {
+    font-size: 20px;
+    padding-right: 5px;
+}
