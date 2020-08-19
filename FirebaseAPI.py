@@ -9,7 +9,7 @@ def insert(data):
     #          'Percentage': 70.02
     #          }
     for x in data:
-        result = firebase.post(CREDENTIALS.GOOGLE_FIREBASE_TABLE,list)
-        print(result)
-
+        result = firebase.post(CREDENTIALS.GOOGLE_FIREBASE_TABLE,x)
+        #print(result)
+    print("done!")
 
