@@ -2,10 +2,11 @@ import bs4 as bs
 import urllib.request
 import re
 import datetime
+import FirebaseAPI
 
 def pullLink():
     #getting linkedin main job search page
-    sauce = urllib.request.urlopen("https://www.linkedin.com/jobs/search?keywords=Computer%2BScience&trk=public_jobs_jobs-search-bar_search-submit&f_TP=1%2C2&redirect=false&position=1&pageNum=0").read()
+    sauce = urllib.request.urlopen("https://www.linkedin.com/jobs/search/?f_E=2&keywords=computer%20science&f_TP=1%2C2&redirect=false&position=1&pageNum=0").read()
     soup = bs.BeautifulSoup(sauce,"lxml")
     links = soup.find_all("a",{"class": "result-card__full-card-link"})
 
@@ -18,11 +19,13 @@ def pullLink():
 
         #grabbing company name
         company = subSoup.find("a",{"class": "topcard__org-name-link topcard__flavor--black-link"}).text
-        company = company.encode("ascii","ignore")
+        company = company.encode("ascii","ignore").decode('utf-8')
+
 
         #grabbing job title
         jobTitle = subSoup.find("h2",{"class": "topcard__title"}).text
-        jobTitle = jobTitle.encode("ascii", "ignore")
+        jobTitle = jobTitle.encode("ascii", "ignore").decode('utf-8')
+
 
         #grabbing date posted
         datePosted = subSoup.find("span",{"class": "topcard__flavor--metadata posted-time-ago__text"})
@@ -38,7 +41,7 @@ def pullLink():
 
         #grabbing location
         location = subSoup.find("span",{"class": "topcard__flavor topcard__flavor--bullet"}).text
-        location = location.encode("ascii","ignore")
+        location = location.encode("ascii","ignore").decode('utf-8')
 
         #grabbing desc
         desc = subSoup.find("div",{"class": "show-more-less-html__markup"})
@@ -49,7 +52,7 @@ def pullLink():
         for j in desc.find_all("ul"):
             descText = descText.replace(j.text,"")
 
-        descText = descText.encode("ascii","ignore")
+        descText = descText.encode("ascii","ignore").decode('utf-8')
 
         jobDict = {
             "company": company,
@@ -81,16 +84,16 @@ def cleanData(jobs):
 
     return jobs
 
+def curatedData(jobs):
+    return jobs
+
 def main():
     pullLink()
     jobs = pullLink()
     #jobs = cleanData(jobs)
     for i in jobs:
-        print(i["company"])
-        print(i["title"])
-        print(i["reqs"])
-        print(i["datePosted"])
-        print(i["location"])
+        FirebaseAPI.insert(i)
+
 
 if __name__ == "__main__":
     main()
