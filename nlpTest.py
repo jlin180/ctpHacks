@@ -2,15 +2,19 @@ import bs4 as bs
 import urllib.request
 import re
 import datetime
-import copy
 from urllib.error import HTTPError
-from google.cloud import automl
 import nltk
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import wordnet
 
+
 lemmatizer = WordNetLemmatizer()
 
+"""
+this is the helper function for lemmatize_sentence
+returns the correct part of speech tag
+the argument takes in a tokenized sentence in a list format
+"""
 def nltk2wn_tag(nltk_tag):
   if nltk_tag.startswith('J'):
     return wordnet.ADJ
@@ -23,6 +27,12 @@ def nltk2wn_tag(nltk_tag):
   else:
     return None
 
+"""
+a helper function for pullLink() and pullMonster()
+argument takes in a string
+string HAS TO BE cleaned beforehand with cleanData() before being passed in
+returns lemmatized verison of the input string
+"""
 def lemmatize_sentence(sentence):
   nltk_tagged = nltk.pos_tag(nltk.word_tokenize(sentence))
   wn_tagged = map(lambda x: (x[0], nltk2wn_tag(x[1])), nltk_tagged)
@@ -34,6 +44,12 @@ def lemmatize_sentence(sentence):
       res_words.append(lemmatizer.lemmatize(word, tag))
   return " ".join(res_words)
 
+"""
+this is a helper function for pullLink() and pullMonster()
+argument takes in string which is going to be searched for unwanted words
+the string that is the input SHOULD BE lemmatized before being sent in
+returns true or false depending on if none of the searched words are found within it
+"""
 def find_keywords(job):
 
     badWords = ["senior","sr","p hd","phd","masters","master","ph d"]
@@ -50,7 +66,13 @@ def find_keywords(job):
                 return False
 
     return True
-
+"""
+this function goes to LinkedIn and pulls job posting data from it
+it pulls information such as company, job title, dated posted, location, and description of the job
+it then will fliter the job postings using find_keywords function, if it passes the filter it will be put into a dict
+and appended to a return list
+this function returns a list of dicts of the job postings pulled 
+"""
 def pullLink():
     #getting linkedin main job search page
     sauce = urllib.request.urlopen("https://www.linkedin.com/jobs/search?keywords=Software%2BEngineer&location=New%2BYork%2C%2BUnited%2BStates&geoId=105080838&trk=public_jobs_jobs-search-bar_search-submit&f_TP=1%2C2&f_E=2&redirect=false&position=1&pageNum=0").read()
@@ -108,11 +130,13 @@ def pullLink():
         for j in desc.find_all("ul"):
             descText = descText.replace(j.text,"")
 
+        #filtering the job posting
         descText = descText.encode("ascii","ignore").decode('utf-8')
         lemDesc = descText;
         lemDesc = cleanData(lemDesc)
         lemDesc = lemmatize_sentence(lemDesc)
 
+        #storing or not storing for output
         if find_keywords(lemDesc) is False:
             continue
         else:
@@ -129,6 +153,13 @@ def pullLink():
 
     return jobs
 
+"""
+this function goes to Monster and pulls job posting data from it
+it pulls information such as company, job title, dated posted, location, and description of the job
+it then will fliter the job postings using find_keywords function, if it passes the filter it will be put into a dict
+and appended to a return list
+this function returns a list of dicts of the job postings pulled 
+"""
 def pullMonster():
     sauce = urllib.request.urlopen("https://www.monster.com/jobs/search/?q=Software-Engineer&tm=14").read()
     soup = bs.BeautifulSoup(sauce, "lxml")
@@ -193,11 +224,13 @@ def pullMonster():
             descText = descText.replace(j.text, "")
             descText = descText + j.text
 
+        #filtering the job posting
         descText = descText.encode("ascii", "ignore").decode('utf-8')
         lemDesc = descText;
         lemDesc = cleanData(lemDesc)
         lemDesc = lemmatize_sentence(lemDesc)
 
+        # storing or not storing for output
         if find_keywords(lemDesc) is False:
             continue
         else:
@@ -214,15 +247,18 @@ def pullMonster():
 
     return jobs
 
-
-
+"""
+this function is a helper function for pullLink() and pullMonster()
+it takes in a string of the job description to be cleaned
+uses several string manipulation functions to get data ready
+returns a string of the cleaned verison of the data
+"""
 def cleanData(job):
     job = job.lower()
     job = job.replace("c++", "cplusplus").encode("ascii", "ignore").decode('utf-8')
     job = job .replace("Description", "").encode("ascii", "ignore").decode('utf-8')
     job = job .replace("description", "").encode("ascii", "ignore").decode('utf-8')
     job = re.sub('[\W_]+', " ", job ).encode("ascii", "ignore").decode('utf-8')
-    # i["reqs"] = re.sub('[^,.0-9a-zA-Z\s]', "", i["reqs"]).encode("ascii", "ignore").decode('utf-8')
     job = job.replace("\n", "").encode("ascii", "ignore").decode('utf-8')
     job = job.replace("\t", "").encode("ascii", "ignore").decode('utf-8')
 
