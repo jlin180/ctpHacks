@@ -52,15 +52,15 @@ returns true or false depending on if none of the searched words are found withi
 """
 def find_keywords(job):
 
-    badWords = ["senior","sr","p hd","phd","masters","master","ph d"]
-    badYears =["yearsofexperience","years of experience","years of","years","year","year of"]
+    miniBadWords =["yearsofexperience","years of experience","years of","years","year","year of","lead", "senior","sr"]
+    badWords = ["p hd","phd","masters","master","ph d"]
 
     if "bachlors" in job or "bachlor" in job:
-        for word in badYears:
+        for word in miniBadWords:
             if word in job:
                 return False
     else:
-        combined = badWords + badYears
+        combined = badWords + miniBadWords
         for word in combined:
             if word in job:
                 return False
