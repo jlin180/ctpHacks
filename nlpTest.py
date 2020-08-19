@@ -140,14 +140,6 @@ def cleanData(jobs):
 
     return jobs
 
-def curatedData(data):
-    curatedInfo = []
-    string = "2+ years of  experience"
-    regexp = re.compile(r'\d+\+? years of')
-    regexp = re.compile(r'\d+\+? year of')
-
-
-
 def main():
     jobs = pullLink()
     FirebaseAPI.insert(jobs)
