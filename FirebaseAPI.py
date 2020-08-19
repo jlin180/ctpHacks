@@ -8,7 +8,9 @@ def insert(data):
     #          'RollNo': 3,
     #          'Percentage': 70.02
     #          }
-    result = firebase.post(CREDENTIALS.GOOGLE_FIREBASE_TABLE,data)
-    #print(result)
-    print("done!")
+
+    for x in data :
+        result = firebase.post(CREDENTIALS.GOOGLE_FIREBASE_TABLE,x)
+        #print(result)
+    print("Inserted data.")
 
