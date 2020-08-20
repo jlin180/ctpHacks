@@ -165,7 +165,7 @@ it then will fliter the job postings using find_keywords function, if it passes 
 and appended to a return list
 this function returns a list of dicts of the job postings pulled
 """
-def pullMonster(inputlink):
+def pullMonster(inputLink):
     sauce = urllib.request.urlopen(inputLink).read()
     soup = bs.BeautifulSoup(sauce, "lxml")
     links = soup.find_all("h2", {"class": "title"})
@@ -289,10 +289,6 @@ def main():
         jobs = pullMonster(i)
         joinedJobs = joinedJobs + jobs
 
-    jobs = pullLink()
-    jobs2 = pullMonster()
-    joinedJobs = jobs+jobs2
-    
     amount = len(joinedJobs)
     print(amount," new graduate job post found.")
     FirebaseAPI.insert(joinedJobs)
