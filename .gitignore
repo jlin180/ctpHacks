@@ -142,4 +142,4 @@ dmypy.json
 cython_debug/
 
 # ignore token/api keys storage file
-*/CCREDENTIALS.py
+*/CREDENTIALS.py
