@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display&family=Sofia&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+:root {
+    --hm-defaultFont: 'Sofia', cursive;
+    --hm-sloganFont: 'Nunito';
+    --hm-googleRed: #D8443D;
+    --hm-googleRedLight: #E5817D;
+    --hm-googleGreen: #209A5C;
+    --hm-googleGreenLight: #32D482;
+    --hm-googleBlue: #4487EF;
+    --hm-googleBlueLight: #8AB4F5;
+    --hm-googleYellow: #F2B030;
+    --hm-googleYellowLight: #F2B030;
+    --hm-cardShadow: #C0C0C0;
+
+}
+
+body {
+    background-image: url('Images/Home_Img.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+#hm-brand {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-family: var(--hm-defaultFont);
+    color: var(--hm-googleBlue);
+    font-size: 150px;
+    text-shadow: 4px 4px 4px var(--hm-cardShadow);
+}
+
+#hm-slogan {
+    font-family: var(--hm-sloganFont);
+    font-weight: lighter;
+    font-size: 75px;
+    text-shadow: 4px 4px 4px var(--hm-cardShadow);
+    margin-bottom: 70px;
+}
+
+
+#hm-getStartedBtn {
+    font-family: var(--hm-sloganFont);
+    font-weight: lighter;
+    font-size: 50px;
+    color: white;
+    background-color: var(--hm-googleGreen);
+    border: 5px solid var(--hm-googleGreenLight);
+    border-radius: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
