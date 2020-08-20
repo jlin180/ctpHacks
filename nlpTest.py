@@ -52,7 +52,7 @@ returns true or false depending on if none of the searched words are found withi
 """
 def find_keywords(job):
 
-    miniBadWords =["yearsofexperience","years of experience","years of","years","year","year of","lead", "senior","sr"]
+    miniBadWords =["yearsofexperience","of experience","year","year of","lead", "senior","sr"]
     badWords = ["p hd","phd","masters","master","ph d"]
 
     if "bachlors" in job or "bachlor" in job:
@@ -68,10 +68,11 @@ def find_keywords(job):
     return True
 """
 this function goes to LinkedIn and pulls job posting data from it
+the input takes in a LinkedIn link to join postings
 it pulls information such as company, job title, dated posted, location, and description of the job
 it then will fliter the job postings using find_keywords function, if it passes the filter it will be put into a dict
 and appended to a return list
-this function returns a list of dicts of the job postings pulled 
+this function returns a list of dicts of the job postings pulled
 """
 def pullLink():
     #getting linkedin main job search page
@@ -130,7 +131,8 @@ def pullLink():
         for j in desc.find_all("u"):
             descText = descText.replace(j.text,"")
         for j in desc.find_all("ul"):
-            descText = descText.replace(j.text,"")
+            descText = descText.replace(j.text, "")
+            descText = descText + " " + j.text
 
         #filtering the job posting
         descText = descText.encode("ascii","ignore").decode('utf-8')
@@ -157,10 +159,11 @@ def pullLink():
 
 """
 this function goes to Monster and pulls job posting data from it
+the input takes in a monster link to join postings
 it pulls information such as company, job title, dated posted, location, and description of the job
 it then will fliter the job postings using find_keywords function, if it passes the filter it will be put into a dict
 and appended to a return list
-this function returns a list of dicts of the job postings pulled 
+this function returns a list of dicts of the job postings pulled
 """
 def pullMonster():
     sauce = urllib.request.urlopen("https://www.monster.com/jobs/search/?q=Software-Engineer&tm=14").read()
@@ -226,7 +229,7 @@ def pullMonster():
             descText = descText.replace(j.text, "")
         for j in desc.find_all("ul"):
             descText = descText.replace(j.text, "")
-            descText = descText + j.text
+            descText = descText + " " + j.text
 
         #filtering the job posting
         descText = descText.encode("ascii", "ignore").decode('utf-8')
@@ -269,9 +272,23 @@ def cleanData(job):
     return job
 
 def main():
-    jobs = pullLink()
-    jobs2 = pullMonster()
-    joinedJobs = jobs+jobs2
+    LinkedIn = ["https://www.linkedin.com/jobs/search?keywords=Software%2BEngineer&location=New%2BYork%2C%2BUnited%2BStates&geoId=105080838&trk=public_jobs_jobs-search-bar_search-submit&f_TP=1%2C2&f_E=2&redirect=false&position=1&pageNum=0",
+                "https://www.linkedin.com/jobs/search?keywords=Computer%2BScience%2BSoftware&location=Los%2BAngeles%2BMetropolitan%2BArea&geoId=90000049&trk=public_jobs_jobs-search-bar_search-submit&currentJobId=1987934835&position=1&pageNum=0",
+                "https://www.linkedin.com/jobs/search?keywords=Computer%2BScience%2BSoftware&location=San%20Francisco%20Bay%20Area&geoId=90000084&trk=public_jobs_jobs-search-bar_search-submit&redirect=false&position=1&pageNum=0",
+                "https://www.linkedin.com/jobs/search?keywords=Computer%2BScience%2BSoftware&location=Dallas%2C%2BTexas%2C%2BUnited%2BStates&geoId=104194190&trk=public_jobs_jobs-search-bar_search-submit&f_TP=1%2C2&f_E=2&redirect=false&position=1&pageNum=0",
+                "https://www.linkedin.com/jobs/search?keywords=Computer%2BScience%2BSoftware&location=boston&trk=public_jobs_jobs-search-bar_search-submit&f_E=2&f_TP=1%2C2&redirect=false&position=1&pageNum=0"]
+    Monster =["https://www.monster.com/jobs/search/?q=Software-Engineer&tm=14",
+            "https://www.monster.com/jobs/search/?q=Data-Science&intcid=skr_navigation_nhpso_searchMain&tm=14",
+            "https://www.monster.com/jobs/search/?q=Software-Computer-Science&where=New-York__2c-NY&rad=5"]
+    joinedJobs = []
+
+    for i in LinkedIn:
+        jobs = pullLink(i)
+        joinedJobs = joinedJobs + jobs
+    for i in Monster:
+        jobs = pullMonster(i)
+        joinedJobs = joinedJobs + jobs
+
     amount = len(joinedJobs)
     print(amount," new graduate job post found.")
     FirebaseAPI.insert(joinedJobs)
