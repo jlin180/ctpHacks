@@ -289,6 +289,10 @@ def main():
         jobs = pullMonster(i)
         joinedJobs = joinedJobs + jobs
 
+    jobs = pullLink()
+    jobs2 = pullMonster()
+    joinedJobs = jobs+jobs2
+    
     amount = len(joinedJobs)
     print(amount," new graduate job post found.")
     FirebaseAPI.insert(joinedJobs)
