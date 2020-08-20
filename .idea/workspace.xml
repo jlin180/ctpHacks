@@ -19,7 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfec0534-8d25-4d4b-9ace-162f1f66478e" name="Default Changelist" comment="fixed nlpTest.py file&#10;Firebase ingesting data properly" />
+    <list default="true" id="cfec0534-8d25-4d4b-9ace-162f1f66478e" name="Default Changelist" comment="fixed nlpTest.py file&#10;Firebase ingesting data properly">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nlpTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/nlpTest.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,6 +49,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Python.nlpTest">
@@ -248,6 +255,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit (test)" />
@@ -271,6 +279,27 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1597768735613" />
+
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1597882662610">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597882662610" />
+    <state width="1899" height="217" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597880153568" />
+    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1597882662610">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597882662610" />
+    <state width="1899" height="217" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597880153568" />
+    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1597882662610">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597882662610" />
+    <state width="1899" height="217" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597880153567" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1597882662610">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597882662610" />
+
     <state width="1899" height="217" key="GridCell.Tab.0.bottom" timestamp="1597880153568">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -286,6 +315,7 @@
     <state width="1899" height="217" key="GridCell.Tab.0.right" timestamp="1597880153568">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+
     <state width="1899" height="217" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597880153568" />
     <state x="184" y="86" key="MergeDialog" timestamp="1597814180934">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -295,9 +325,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="598" y="281" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597874372272" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1597797748554">
+    <state x="461" y="165" key="SettingsEditor" timestamp="1597882489185">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597882489185" />
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1597797748554" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1597875621075">
       <screen x="0" y="0" width="1920" height="1040" />
