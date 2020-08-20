@@ -11,6 +11,4 @@ def insert(data):
 
     for x in data:
         result = firebase.post(CREDENTIALS.GOOGLE_FIREBASE_TABLE,x)
-        #print(result)
-    print("Inserted data.")
 

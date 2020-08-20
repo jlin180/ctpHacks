@@ -6,7 +6,7 @@ from urllib.error import HTTPError
 import nltk
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import wordnet
-import FirebaseAPI
+#import FirebaseAPI
 
 lemmatizer = WordNetLemmatizer()
 
@@ -52,7 +52,7 @@ returns true or false depending on if none of the searched words are found withi
 """
 def find_keywords(job):
 
-    miniBadWords =["yearsofexperience","years of experience","years of","years","year","year of","lead", "senior","sr"]
+    miniBadWords =["yearsofexperience","years","of experience","years","year","year of","lead", "senior","sr"]
     badWords = ["p hd","phd","masters","master","ph d"]
 
     if "bachlors" in job or "bachlor" in job:
@@ -131,6 +131,7 @@ def pullLink():
             descText = descText.replace(j.text,"")
         for j in desc.find_all("ul"):
             descText = descText.replace(j.text,"")
+            descText = descText + " " + j.text
 
         #filtering the job posting
         descText = descText.encode("ascii","ignore").decode('utf-8')
@@ -138,7 +139,6 @@ def pullLink():
         lemDesc = cleanData(lemDesc)
         lemDesc = lemmatize_sentence(lemDesc)
 
-        #storing or not storing for output
         if find_keywords(lemDesc) is False:
             continue
         else:
@@ -226,7 +226,7 @@ def pullMonster():
             descText = descText.replace(j.text, "")
         for j in desc.find_all("ul"):
             descText = descText.replace(j.text, "")
-            descText = descText + j.text
+            descText = descText +" "+ j.text
 
         #filtering the job posting
         descText = descText.encode("ascii", "ignore").decode('utf-8')
