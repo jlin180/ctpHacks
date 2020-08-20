@@ -74,9 +74,9 @@ it then will fliter the job postings using find_keywords function, if it passes 
 and appended to a return list
 this function returns a list of dicts of the job postings pulled
 """
-def pullLink():
+def pullLink(inputLink):
     #getting linkedin main job search page
-    sauce = urllib.request.urlopen("https://www.linkedin.com/jobs/search?keywords=Software%2BEngineer&location=New%2BYork%2C%2BUnited%2BStates&geoId=105080838&trk=public_jobs_jobs-search-bar_search-submit&f_TP=1%2C2&f_E=2&redirect=false&position=1&pageNum=0").read()
+    sauce = urllib.request.urlopen(inputLink).read()
     soup = bs.BeautifulSoup(sauce,"lxml")
     links = soup.find_all("a",{"class": "result-card__full-card-link"})
 
@@ -165,8 +165,8 @@ it then will fliter the job postings using find_keywords function, if it passes 
 and appended to a return list
 this function returns a list of dicts of the job postings pulled
 """
-def pullMonster():
-    sauce = urllib.request.urlopen("https://www.monster.com/jobs/search/?q=Software-Engineer&tm=14").read()
+def pullMonster(inputlink):
+    sauce = urllib.request.urlopen(inputLink).read()
     soup = bs.BeautifulSoup(sauce, "lxml")
     links = soup.find_all("h2", {"class": "title"})
 

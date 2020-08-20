@@ -20,8 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfec0534-8d25-4d4b-9ace-162f1f66478e" name="Default Changelist" comment="fixed nlpTest.py file&#10;Firebase ingesting data properly">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CREDENTIALS.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nlpTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/nlpTest.py" afterDir="false" />
     </list>
@@ -41,12 +40,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1gHMoertGaF8NWLLUgMfjGAOe3k" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -258,6 +260,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="initial commit (test)" />
     <MESSAGE value="firebase insert" />
     <MESSAGE value="firebase test with job posts" />
@@ -275,47 +278,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="707" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1597768638699" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1597768735613">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1597886051862">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597886051862" />
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1597768735613" />
-
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1597882662610">
+    <state width="1899" height="262" key="GridCell.Tab.0.bottom" timestamp="1597886416279">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597882662610" />
+    <state width="1899" height="262" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597886416279" />
     <state width="1899" height="217" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597880153568" />
-    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1597882662610">
+    <state width="1899" height="262" key="GridCell.Tab.0.center" timestamp="1597886416278">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597882662610" />
+    <state width="1899" height="262" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597886416278" />
     <state width="1899" height="217" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597880153568" />
-    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1597882662610">
+    <state width="1899" height="262" key="GridCell.Tab.0.left" timestamp="1597886416278">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597882662610" />
+    <state width="1899" height="262" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597886416278" />
     <state width="1899" height="217" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597880153567" />
-    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1597882662610">
+    <state width="1899" height="262" key="GridCell.Tab.0.right" timestamp="1597886416278">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597882662610" />
-
-    <state width="1899" height="217" key="GridCell.Tab.0.bottom" timestamp="1597880153568">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="217" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597880153568" />
-    <state width="1899" height="217" key="GridCell.Tab.0.center" timestamp="1597880153568">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="217" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597880153568" />
-    <state width="1899" height="217" key="GridCell.Tab.0.left" timestamp="1597880153567">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="217" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597880153567" />
-    <state width="1899" height="217" key="GridCell.Tab.0.right" timestamp="1597880153568">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-
+    <state width="1899" height="262" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597886416278" />
     <state width="1899" height="217" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597880153568" />
     <state x="184" y="86" key="MergeDialog" timestamp="1597814180934">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -325,10 +311,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="598" y="281" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597874372272" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1597882489185">
+    <state x="516" y="215" key="SettingsEditor" timestamp="1597886198621">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597882489185" />
+    <state x="516" y="215" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1597886198621" />
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1597797748554" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1597875621075">
       <screen x="0" y="0" width="1920" height="1040" />
