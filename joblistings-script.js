@@ -11,14 +11,14 @@ setup();
 function setup() {
     // var firebase = require('firebase');
     var firebaseConfig = {
-        apiKey: "AIzaSyDo5eHoEF5HKkvUzhZ-fFDC2QU6ahXTnU4",
-        authDomain: "ctphacks.firebaseapp.com",
-        databaseURL: "https://ctphacks.firebaseio.com",
-        projectId: "ctphacks",
-        storageBucket: "ctphacks.appspot.com",
-        messagingSenderId: "549681389410",
-        appId: "1:549681389410:web:2fb1e5bb1ff3359bce563b",
-        measurementId: "G-WH0B8Y0W4P"
+        apiKey: "",
+        authDomain: "",
+        databaseURL: "",
+        projectId: "",
+        storageBucket: "",
+        messagingSenderId: "",
+        appId: "",
+        measurementId: ""
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
